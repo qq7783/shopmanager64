@@ -6,7 +6,10 @@ import router from './router';
 // 导入element-ui
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-// 使用
+import axios from 'axios'
+Vue.prototype.$http = axios; 
+axios.defaults.baseURL = "http://localhost:8888/api/private/v1/";
+// 使用ElementUI
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false
