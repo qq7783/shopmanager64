@@ -118,6 +118,7 @@ export default {
       this.$message.warning("请先登录");
     }
   },
+  
 };
 </script>
 
@@ -132,7 +133,7 @@ export default {
   /* height: 100%; */
 }
 .middle {
-  line-height: 60px;
+  /* line-height: 60px; */
   text-align: center;
   color: #ffffff;
 }
