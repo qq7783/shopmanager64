@@ -114,11 +114,23 @@ export default {
     if (!localStorage.getItem("token")) {
       // 改标识 去登录页面
       this.$router.push({
-          name: "login"
-        });
+        name: "login"
+      });
+      // 提示信息
+      this.$message.warning("请先登录");
     }
-    // 提示信息
-    this.$message.warning("请先登录");
+  },
+  methods: {
+    handleLoginout () {
+      // 清除token
+      localStorage.clear();
+      // 来到登录页面
+      this.$router.push({
+        name: "login"
+      });
+      // 提示退出成功
+      this.$message.warning('退出成功');
+    }
   }
 };
 </script>
@@ -134,7 +146,7 @@ export default {
   /* height: 100%; */
 }
 .middle {
-  line-height: 60px;
+  /* line-height: 60px; */
   text-align: center;
   color: #ffffff;
 }
