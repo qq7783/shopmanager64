@@ -25,15 +25,27 @@ export default {
   },
   methods: {
     // 登录请求
-    handleLogin () {
-        this.$http
-            .post(`login`,this.formdata)
-            .then((res) => {
-            console.log(res);
-            // console.log(this.formdata)
-        })
+    async handleLogin() {
+      const res = await this.$http.post(`login`, this.formdata);
+      console.log(res);
+      const {
+        data: {
+          data:{token},
+          meta:{msg, status}
+        }
+      } = res;
+      if (status === 200) {
+        // 存储token
+        localStorage.setItem("token",token); //h5新特性本地存储
+        // 渲染home组件 改标识
+        this.$router.push({
+          name: "home"
+        });
+        return;
+      };
+      this.$message.error(msg);
     }
-  } 
+  }
 };
 </script>
 
@@ -49,7 +61,7 @@ export default {
 .login-form {
   background-color: #ffffff;
   border-radius: 5px;
-  /* 开发 */
+
   width: 400px;
   padding: 30px;
 }
