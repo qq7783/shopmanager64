@@ -27,16 +27,16 @@ export default {
     // 登录请求
     async handleLogin() {
       const res = await this.$http.post(`login`, this.formdata);
-      console.log(res);
+      // console.log(res);
       const {
         data: {
-          data:{token},
+          data,
           meta:{msg, status}
         }
       } = res;
       if (status === 200) {
         // 存储token
-        localStorage.setItem("token",token); //h5新特性本地存储
+        localStorage.setItem("token",data.token); //h5新特性本地存储
         // 渲染home组件 改标识
         this.$router.push({
           name: "home"

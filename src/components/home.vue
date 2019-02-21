@@ -109,28 +109,15 @@
 
 <script>
 export default {
-//   beforeMount() {
-//     if (!localStorage.getItem("token")) {
-//       this.$router.push({
-//         name: "login"
-//       });
-//       this.$message.warning("请先登录");
-//     }
-//   },
-  mounted() {},
-  methods: {
-    // 退出
-    handleLoginout() {
-      // 1. 清除token
-    //   localStorage.clear();
-      // 2. 来到登录
+  // 钩子函数 页面加载之前进来这个函数
+  beforeMount() {
+    if (!localStorage.getItem("token")) {
       this.$router.push({
         name: "login"
       });
-      // 3. 提示
-      this.$message.warning("退出成功");
+      this.$message.warning("请先登录");
     }
-  }
+  },
 };
 </script>
 
